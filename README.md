@@ -1,5 +1,9 @@
 # 🌱 Touch Grass Garden
 
+![CI](https://github.com/AdityaAneNenu/touchgrass-garden/actions/workflows/ci.yml/badge.svg)
+![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 **An offline garden planner with a local open-weight LLM at its core — built for the Hacktoberfest 2026 Open-Source AI Challenge, Week 1: "Touch Grass."**
 
 You tell it your city. It tells you exactly what to start, sow, or transplant *this week* based on your average frost dates — and a small open-weight model (`Qwen2.5-1.5B-Instruct`) that runs **entirely on your laptop** writes the weekly briefing and answers follow-up questions. No API keys, no cloud, no telemetry. Unplug the network after setup and everything still works.
