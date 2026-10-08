@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# ~1 GB open-weight model - downloaded via scripts/download-model.ps1
+models/*.gguf
+
+# scratch logs
+.*.txt

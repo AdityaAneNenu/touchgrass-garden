@@ -1,0 +1,46 @@
+[project]
+name = "touchgrass-garden"
+version = "1.0.0"
+description = "Offline garden planner powered by a local open-weight LLM - built for Hacktoberfest 2026 Open-Source AI Challenge (Week 1: Touch Grass)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+keywords = ["gardening", "offline", "llm", "gguf", "qwen", "llama-cpp"]
+dependencies = [
+    "llama-cpp-python>=0.3.0",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.8"]
+
+[project.scripts]
+touchgrass = "touchgrass.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["touchgrass"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [".venv", "models"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4"]
+ignore = ["E501"]  # long f-strings are more readable than broken-up ones
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+# llama-cpp-python publishes prebuilt CPU wheels on GitHub Pages; PyPI only has sdists
+# (which would require a full C++ toolchain to build on Windows).
+[tool.uv.sources]
+llama-cpp-python = { index = "llama-cpp-python-cpu" }
+
+[[tool.uv.index]]
+name = "llama-cpp-python-cpu"
+url = "https://abetlen.github.io/llama-cpp-python/whl/cpu"

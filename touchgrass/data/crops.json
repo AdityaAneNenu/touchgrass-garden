@@ -1,0 +1,297 @@
+{
+  "_comment": "Planting rules are offsets from your average last-spring frost (negative = before) or first-fall frost, in weeks. All dates are targets, not guarantees; soil temp and local experience win.",
+  "crops": [
+    {
+      "name": "Tomatoes",
+      "type": "fruit",
+      "start_indoors_weeks": -6,
+      "direct_sow_weeks": null,
+      "transplant_weeks": 2,
+      "days_to_maturity": 70,
+      "frost_tender": true,
+      "tip": "Transplant after nights stay above 50F; bury the stem deep for stronger roots."
+    },
+    {
+      "name": "Peppers",
+      "type": "fruit",
+      "start_indoors_weeks": -8,
+      "direct_sow_weeks": null,
+      "transplant_weeks": 2,
+      "days_to_maturity": 75,
+      "frost_tender": true,
+      "tip": "Peppers hate cold feet - wait until soil is genuinely warm, not just air."
+    },
+    {
+      "name": "Eggplant",
+      "type": "fruit",
+      "start_indoors_weeks": -8,
+      "direct_sow_weeks": null,
+      "transplant_weeks": 3,
+      "days_to_maturity": 75,
+      "frost_tender": true,
+      "tip": "Warm soil (60F+) or it sulks; black plastic mulch helps in cool climates."
+    },
+    {
+      "name": "Cucumbers",
+      "type": "fruit",
+      "start_indoors_weeks": -3,
+      "direct_sow_weeks": 2,
+      "transplant_weeks": 2,
+      "days_to_maturity": 55,
+      "frost_tender": true,
+      "tip": "Give a trellis and consistent water; bitter fruit usually means thirsty plants."
+    },
+    {
+      "name": "Zucchini & Summer Squash",
+      "type": "fruit",
+      "start_indoors_weeks": -3,
+      "direct_sow_weeks": 2,
+      "transplant_weeks": 2,
+      "days_to_maturity": 45,
+      "frost_tender": true,
+      "tip": "Two plants is plenty for most households; three is a joke you'll regret in August."
+    },
+    {
+      "name": "Green Beans (bush)",
+      "type": "legume",
+      "start_indoors_weeks": null,
+      "direct_sow_weeks": 2,
+      "transplant_weeks": null,
+      "days_to_maturity": 55,
+      "frost_tender": true,
+      "tip": "Direct sow - beans resent transplanting. Pick every couple days to keep them producing."
+    },
+    {
+      "name": "Sweet Potatoes",
+      "type": "root",
+      "start_indoors_weeks": -6,
+      "direct_sow_weeks": null,
+      "transplant_weeks": 4,
+      "days_to_maturity": 100,
+      "frost_tender": true,
+      "tip": "Slips want a long, hot season; a warm mulch and 4+ hours of sun pays off."
+    },
+    {
+      "name": "Corn",
+      "type": "grain",
+      "start_indoors_weeks": null,
+      "direct_sow_weeks": 2,
+      "transplant_weeks": null,
+      "days_to_maturity": 75,
+      "frost_tender": true,
+      "tip": "Plant in a block, not a row - it's wind pollinated."
+    },
+    {
+      "name": "Melons",
+      "type": "fruit",
+      "start_indoors_weeks": -3,
+      "direct_sow_weeks": 2,
+      "transplant_weeks": 2,
+      "days_to_maturity": 80,
+      "frost_tender": true,
+      "tip": "Pinch to 2-3 fruits per vine in short-season climates for earlier harvests."
+    },
+    {
+      "name": "Okra",
+      "type": "fruit",
+      "start_indoors_weeks": -4,
+      "direct_sow_weeks": 3,
+      "transplant_weeks": 3,
+      "days_to_maturity": 55,
+      "frost_tender": true,
+      "tip": "Okra loves heat the way peas hate it - it takes off when nothing else will."
+    },
+    {
+      "name": "Basil",
+      "type": "herb",
+      "start_indoors_weeks": -6,
+      "direct_sow_weeks": 2,
+      "transplant_weeks": 2,
+      "days_to_maturity": 60,
+      "frost_tender": true,
+      "tip": "Pinch flower buds to keep leaves coming; one plant flowers, the season's over."
+    },
+    {
+      "name": "Cilantro",
+      "type": "herb",
+      "start_indoors_weeks": null,
+      "direct_sow_weeks": -2,
+      "transplant_weeks": null,
+      "days_to_maturity": 45,
+      "frost_tender": false,
+      "tip": "Bolts in heat - sow again in late summer for a fall crop."
+    },
+    {
+      "name": "Lettuce & Salad Greens",
+      "type": "leaf",
+      "start_indoors_weeks": -4,
+      "direct_sow_weeks": -3,
+      "transplant_weeks": -1,
+      "days_to_maturity": 40,
+      "frost_tender": false,
+      "tip": "One of the few crops you can sow right up to (and a bit past) your last frost."
+    },
+    {
+      "name": "Spinach",
+      "type": "leaf",
+      "start_indoors_weeks": null,
+      "direct_sow_weeks": -4,
+      "transplant_weeks": null,
+      "days_to_maturity": 40,
+      "frost_tender": false,
+      "tip": "Prefers cool soil; fall sowing overwinters under leaves for earliest spring picking."
+    },
+    {
+      "name": "Kale & Collards",
+      "type": "leaf",
+      "start_indoors_weeks": -6,
+      "direct_sow_weeks": -3,
+      "transplant_weeks": -2,
+      "days_to_maturity": 55,
+      "frost_tender": false,
+      "tip": "Flavor sweetens after a frost; spring and fall are their glory seasons."
+    },
+    {
+      "name": "Carrots",
+      "type": "root",
+      "start_indoors_weeks": null,
+      "direct_sow_weeks": -3,
+      "transplant_weeks": null,
+      "days_to_maturity": 70,
+      "frost_tender": false,
+      "tip": "Keep the seedbed damp for 10 days or you get empty rows; thin early and eat the thinnings."
+    },
+    {
+      "name": "Beets & Chard",
+      "type": "root",
+      "start_indoors_weeks": null,
+      "direct_sow_weeks": -3,
+      "transplant_weeks": null,
+      "days_to_maturity": 55,
+      "frost_tender": false,
+      "tip": "Each 'seed' is a cluster - thin to one seedling per spot."
+    },
+    {
+      "name": "Radishes",
+      "type": "root",
+      "start_indoors_weeks": null,
+      "direct_sow_weeks": -4,
+      "transplant_weeks": null,
+      "days_to_maturity": 28,
+      "frost_tender": false,
+      "tip": "Fastest crop in the garden - sow small batches every 2 weeks."
+    },
+    {
+      "name": "Turnips & Rutabaga",
+      "type": "root",
+      "start_indoors_weeks": null,
+      "direct_sow_weeks": -4,
+      "transplant_weeks": null,
+      "days_to_maturity": 60,
+      "frost_tender": false,
+      "tip": "A classic fall root; tops are as good as the roots."
+    },
+    {
+      "name": "Peas (snap & shelling)",
+      "type": "legume",
+      "start_indoors_weeks": null,
+      "direct_sow_weeks": -4,
+      "transplant_weeks": null,
+      "days_to_maturity": 60,
+      "frost_tender": false,
+      "tip": "As soon as soil works - they'll take frost. Trellis early, before they tangle."
+    },
+    {
+      "name": "Broccoli & Cauliflower",
+      "type": "head",
+      "start_indoors_weeks": -8,
+      "direct_sow_weeks": null,
+      "transplant_weeks": -3,
+      "days_to_maturity": 70,
+      "frost_tender": false,
+      "tip": "A fall crop grown in summer - start now for Sept harvests in many climates."
+    },
+    {
+      "name": "Cabbage & Brussels Sprouts",
+      "type": "head",
+      "start_indoors_weeks": -8,
+      "direct_sow_weeks": null,
+      "transplant_weeks": -3,
+      "days_to_maturity": 80,
+      "frost_tender": false,
+      "tip": "Brussels sprouts improve after frost; spray for cabbage worms weekly."
+    },
+    {
+      "name": "Onions & Leeks",
+      "type": "root",
+      "start_indoors_weeks": -10,
+      "direct_sow_weeks": -4,
+      "transplant_weeks": -3,
+      "days_to_maturity": 100,
+      "frost_tender": false,
+      "tip": "Long-day vs short-day varieties matter more than almost anything else - match your latitude."
+    },
+    {
+      "name": "Garlic (fall planting)",
+      "type": "root",
+      "start_indoors_weeks": null,
+      "direct_sow_weeks": null,
+      "transplant_weeks": null,
+      "days_to_maturity": 240,
+      "frost_tender": false,
+      "plant_before_first_frost_weeks": 4,
+      "tip": "Clove point up, 2 inches deep, 6 inches apart; mulch heavily and wait until summer."
+    },
+    {
+      "name": "Potatoes",
+      "type": "root",
+      "start_indoors_weeks": null,
+      "direct_sow_weeks": -2,
+      "transplant_weeks": null,
+      "days_to_maturity": 90,
+      "frost_tender": false,
+      "tip": "Hill soil around stems as they grow; keep out of light or they turn green."
+    },
+    {
+      "name": "Asparagus & Rhubarb",
+      "type": "perennial",
+      "start_indoors_weeks": null,
+      "direct_sow_weeks": null,
+      "transplant_weeks": -4,
+      "days_to_maturity": 700,
+      "frost_tender": false,
+      "tip": "A 20-year investment - plant crowns in deep compost and never rush it."
+    },
+    {
+      "name": "Strawberries",
+      "type": "perennial",
+      "start_indoors_weeks": null,
+      "direct_sow_weeks": null,
+      "transplant_weeks": -4,
+      "days_to_maturity": 90,
+      "frost_tender": false,
+      "tip": "June-bearing runners spread fast; pin them down now for free plants next year."
+    },
+    {
+      "name": "Roses, Coneflower & Pollinator Perennials",
+      "type": "flower",
+      "start_indoors_weeks": -8,
+      "direct_sow_weeks": -4,
+      "transplant_weeks": -2,
+      "days_to_maturity": 90,
+      "frost_tender": false,
+      "tip": "Fall is ideal planting weather for perennials - roots grow while tops rest."
+    },
+    {
+      "name": "Tulips & Daffodils",
+      "type": "flower",
+      "start_indoors_weeks": null,
+      "direct_sow_weeks": null,
+      "transplant_weeks": null,
+      "days_to_maturity": 120,
+      "frost_tender": false,
+      "plant_before_first_frost_weeks": 6,
+      "tip": "Bulbs want soil that's genuinely cool; pointy end up, 3x the bulb's height deep."
+    }
+  ]
+}
