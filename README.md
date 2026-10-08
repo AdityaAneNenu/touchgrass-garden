@@ -6,25 +6,25 @@
 
 **An offline garden planner with a local open-weight LLM at its core — built for the Hacktoberfest 2026 Open-Source AI Challenge, Week 1: "Touch Grass."**
 
-You tell it your city. It tells you exactly what to start, sow, or transplant *this week* based on your average frost dates — and a small open-weight model (`Qwen2.5-1.5B-Instruct`) that runs **entirely on your laptop** writes the weekly briefing and answers follow-up questions. No API keys, no cloud, no telemetry. Unplug the network after setup and everything still works.
+You tell it your city. It tells you exactly what to start, sow, or transplant **this week** based on your average frost dates — and a small open-weight model (`Qwen2.5-1.5B-Instruct`) that runs **entirely on your laptop** writes the weekly briefing and answers follow-up questions. No API keys, no cloud, no telemetry. Unplug the network after setup and everything still works.
 
 **→ See [DEMO.md](DEMO.md) for full, real terminal transcripts of every command.**
 
-```
+```text
 > touchgrass brief denver
 ==========================================================================
-  TOUCH GRASS GARDEN - week of Sunday, March 15, 2026
-  Denver, CO (zone 5b)
+ TOUCH GRASS GARDEN - week of Sunday, March 15, 2026
+ Denver, CO (zone 5b)
 ==========================================================================
-  Next last-frost:  May 05   First fall-frost: Oct 05   Season: 153 days
+ Next last-frost:  May 05   First fall-frost: Oct 05   Season: 153 days
 --------------------------------------------------------------------------
-  DO THIS WEEK (9 jobs, in priority order):
-  + Start indoors Peppers                                Mar 10 (5 day(s) ago)
-  + Start indoors Tomatoes                               Mar 24 (in 9 days)
-  ...
+ DO THIS WEEK (9 jobs, in priority order):
+ + Start indoors Peppers                                Mar 10 (5 day(s) ago)
+ + Start indoors Tomatoes                               Mar 24 (in 9 days)
+ ...
 --------------------------------------------------------------------------
-  WEEKLY BRIEFING (local Qwen2.5-1.5B, running on this machine)
-  ...model-generated encouragement and priority list...
+ WEEKLY BRIEFING (local Qwen2.5-1.5B, running on this machine)
+ ...model-generated encouragement and priority list...
 ```
 
 ## Why open innovation matters here
@@ -32,11 +32,13 @@ You tell it your city. It tells you exactly what to start, sow, or transplant *t
 | Closed/cloud approach | What this does instead |
 | --- | --- |
 | Weather + gardening API with a key, rate limits, and a privacy policy | Frost dates and crop rules are **bundled JSON** — the deterministic core never calls out |
-| GPT/Claude call for the briefing: costs per token, dies offline, sends your location to a third party | A **1.04 GB Apache-2.0 GGUF quant** of Qwen2.5 runs via `llama-cpp-python` on CPU. Your location and questions never leave the machine |
+| GPT/Claude call for the briefing: costs per token, dies offline, sends your location to a third party | A **1.04 GB Apache-2.0 GGUF** of Qwen2.5 runs via `llama-cpp-python` on CPU. Your location and questions never leave the machine |
 | "Works on our servers" | Runs on a $0/month, 8 GB-RAM, GPU-less Windows laptop. Model load ≈ 8 s, generation ≈ 6 tok/s |
-| Model is a fixed black box | Swap in **any** GGUF (`TOUCHGRASS_MODEL=/path/to/model.gguf`) — smaller for speed, bigger for quality, fine-tuned if you want |
+| Model is a fixed black box | Swap in **any GGUF** (`TOUCHGRASS_MODEL=/path/to/model.gguf`) — smaller for speed, bigger for quality, fine-tuned if you want |
 
-The architecture deliberately keeps the **rules deterministic and the prose generative**: the LLM never decides *what* is safe to plant (frost math is code with a 61-test suite); it only turns verified facts into a briefing that gets you out the door. That split is only practical because open models let us run inference where the data already lives — on your machine, next to your garden.
+The architecture deliberately keeps the **rules deterministic and the prose generative**: the LLM never decides *what* is safe to plant (frost math is code with a 61-test suite); it only turns verified facts into a briefing that gets you out the door.
+
+That split is only practical because open models let us run inference where the data already lives — on your machine, next to your garden.
 
 ## The "Touch Grass" angle
 
@@ -65,15 +67,16 @@ uv run touchgrass doctor
 
 # 4. Set your location once - after this, no city argument needed anywhere
 uv run touchgrass config set-city denver
+
 # ...or anywhere on Earth with your own frost dates:
 uv run touchgrass config set-frost --place "My Garden" --last 05-05 --first 10-05 --zone 6a
 
 # 5. Go touch grass
-uv run touchgrass plan                     # this week's jobs (no model needed)
-uv run touchgrass brief                    # plan + local-LLM weekly briefing
-uv run touchgrass chat                     # REPL - model loads once, ask follow-ups
+uv run touchgrass plan
+uv run touchgrass brief
+uv run touchgrass chat
 uv run touchgrass ask "is it too late for garlic?"
-uv run touchgrass cities                   # 50 bundled locations
+uv run touchgrass cities
 ```
 
 No `uv`? `pip install -e .` inside a virtualenv works too (llama-cpp-python may need a C++ toolchain if no wheel matches your platform).
@@ -90,24 +93,50 @@ No `uv`? `pip install -e .` inside a virtualenv works too (llama-cpp-python may 
 | `cities` | List the 50 bundled locations | no |
 | `doctor` | Check runtime, model, and profile | no |
 
-**Flags** (on `plan`/`brief`/`ask`): `--date YYYY-MM-DD` plan for another day,
-`--json` machine-readable output, `--ics FILE` export tasks as calendar events
-with day-before reminders, `-v/--verbose` debug logging.
+### Flags
 
-**Exit codes** (script-friendly): `0` success · `1` runtime/model error ·
-`2` usage error · `130` interrupted (Ctrl+C).
+On `plan`/`brief`/`ask`:
 
-**Environment variables**: `TOUCHGRASS_MODEL=/path/to/model.gguf` swap models ·
-`TOUCHGRASS_HOME=/path` relocate the profile (used by tests).
+- `--date YYYY-MM-DD` — plan for another day
+- `--json` — machine-readable output
+- `--ics FILE` — export tasks as calendar events with day-before reminders
+- `-v` / `--verbose` — debug logging
+
+### Exit codes
+
+- `0` — success
+- `1` — runtime/model error
+- `2` — usage error
+- `130` — interrupted (Ctrl+C)
+
+### Environment variables
+
+- `TOUCHGRASS_MODEL=/path/to/model.gguf` — swap models
+- `TOUCHGRASS_HOME=/path` — relocate the profile (used by tests)
 
 ## Testing & quality
 
 ```powershell
-uv run pytest -q                # 61 tests, no model file needed
+uv run pytest -q
 uv run ruff check touchgrass tests
 ```
 
-The suite covers frost-date math (including year rollover), city search, plan windows for spring/summer/fall, the profile/config subsystem, JSON + iCal export (RFC 5545 compliance, stable UIDs), the chat REPL, CLI end-to-end behavior, and model-output sanitization — **none of them need the model**, which is exactly why CI can run them on every push (`.github/workflows/ci.yml`: lint + tests on Python 3.11–3.13, Linux + Windows).
+The suite covers:
+
+- frost-date math (including year rollover)
+- city search
+- plan windows for spring/summer/fall
+- the profile/config subsystem
+- JSON + iCal export
+- RFC 5545 compliance
+- stable UIDs
+- the chat REPL
+- CLI end-to-end behavior
+- model-output sanitization
+
+**None of the tests need the model file**, which is exactly why CI can run them on every push.
+
+`.github/workflows/ci.yml` runs lint + tests on Python 3.11–3.13 on Linux and Windows.
 
 ## Model & data provenance
 
@@ -118,7 +147,7 @@ The suite covers frost-date math (including year rollover), city search, plan wi
 
 ## How it works
 
-```
+```text
 touchgrass/
 ├── frost.py         # city lookup + frost-date math (pure stdlib)
 ├── planner.py       # crop rules → tasks due this week / on deck / harvests
@@ -133,9 +162,27 @@ touchgrass/
     └── crops.json         # 30 crops: sow/transplant offsets, DTM, tips
 ```
 
-- **Deterministic core:** every crop action is an offset from your last-spring or first-fall frost date (e.g. "tomatoes: start indoors 6 weeks before last frost"). A task is "due" when its target lands within ±10 days of today. Out-of-season dates roll to next year automatically.
-- **Generative layer:** the plan is serialized to a compact context; the local model gets a fixed system prompt ("Sprout", the garden coach, ≤150 words, no fluff) and writes the briefing / answers questions, grounded in that context.
-- **Graceful degradation:** `plan` works with no model file at all; `brief`/`ask`/`chat` fail loudly with instructions instead of silently calling a cloud API.
+### Deterministic core
+
+Every crop action is an offset from your last-spring or first-fall frost date.
+
+For example:
+
+> Tomatoes: start indoors 6 weeks before last frost.
+
+A task is **due** when its target lands within ±10 days of today.
+
+Out-of-season dates roll to next year automatically.
+
+### Generative layer
+
+The plan is serialized to a compact context; the local model gets a fixed system prompt ("Sprout", the garden coach, ≤150 words, no fluff) and writes the briefing / answers questions, grounded in that context.
+
+### Graceful degradation
+
+`plan` works with no model file at all.
+
+`brief` / `ask` / `chat` fail loudly with instructions instead of silently calling a cloud API.
 
 ## Limitations (honest list)
 
@@ -148,6 +195,3 @@ touchgrass/
 ## License
 
 MIT (code). Model weights: Apache-2.0 (Qwen). Frost/crop data: compiled from public sources, provided as-is.
-
-#   t o u c h g r a s s - g a r d e n  
- 
